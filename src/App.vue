@@ -1,28 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app id="desafio">
+    <TopBar v-if="$route.name !== 'login'" />
+    <v-main>
+      <v-container>
+        <BodyHeader v-if="$route.name !== 'login'" />
+        <router-view />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TopBar from './components/TopBar.vue'
+import BodyHeader from './components/BodyHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
-</script>
+    TopBar,
+    BodyHeader
+  },
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  data: () => ({
+    //
+  }),
+};
+</script>
